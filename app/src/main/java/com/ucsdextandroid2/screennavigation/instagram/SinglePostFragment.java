@@ -18,6 +18,16 @@ public class SinglePostFragment extends BaseListFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        NavigationUI.setupWithNavController(getToolbar(),Navigation.findNavController(view)); //add back arrow in the view to previous page
+
+        Bundle args = getArguments();
+        if(args != null) {
+            SinglePostFragmentArgs fragmentArgs = SinglePostFragmentArgs.fromBundle(args);
+            if(fragmentArgs.getUsername() != null)
+                getToolbar().setTitle("Posted by" + fragmentArgs.getUsername());
+        }
+       // SinglePostFragmentArgs.fromBundle(getArguments())
+
     }
 
     @Override
